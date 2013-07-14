@@ -17,6 +17,10 @@
     "backbonejs",
     "javascript"
   ],
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-watch": "~0.4.4"
+  },
   "bugs": {
     "url": "https://github.com/niceaji/backbonejs-abc/issues"
   }
