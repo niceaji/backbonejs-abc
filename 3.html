@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>backbone.js ABC</title>
+</head>
+<body>
+	<div id="CommentListView"></div>
+
+
+	<script type="text/template" id="CommentListTemplate">
+	<ul>
+	<% 
+	for(var i=0; i<obj.length; i++){
+	%>
+		<li><%=obj[i].content%></li>
+	<%
+	}
+	%>
+	</ul>
+	</script>
+
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+
+	<script src="js/3.js"></script>
+
+
+</body>
+</html>

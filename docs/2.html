@@ -29,6 +29,11 @@
               </a>
             
               
+              <a class="source" href="3.html">
+                3.js
+              </a>
+            
+              
               <a class="source" href="intro.html">
                 intro.js
               </a>
@@ -74,7 +79,7 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
-              <p><a href="../1.html">1.js</a> 참고</p>
+              <p><a href="../1.html">1.js</a> 에서 만든 collection  </p>
 
             </div>
             
@@ -106,11 +111,13 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-4">&#182;</a>
               </div>
-              <p>생성자</p>
+              <p>생성자, this.collection <code>sync</code> 핸들러 등록</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>		initialize : <span class="keyword">function</span>(){</pre></div></div>
+            <div class="content"><div class='highlight'><pre>		initialize : <span class="keyword">function</span>(){
+			<span class="keyword">this</span>.listenTo(<span class="keyword">this</span>.collection, <span class="string">"sync"</span>, <span class="keyword">this</span>.render);
+		},</pre></div></div>
             
         </li>
         
@@ -121,12 +128,18 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-5">&#182;</a>
               </div>
-              <p><code>sync</code> 핸들러 등록</p>
+              <p><code>render()</code>에서 현재 view의 마크업을 만듦<br>현재 view <code>$el</code>  (template + toJSON) 
+보통 this를 return 한다 </p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>			<span class="keyword">this</span>.listenTo(<span class="keyword">this</span>.collection, <span class="string">"sync"</span>, <span class="keyword">this</span>.render);
-		},</pre></div></div>
+            <div class="content"><div class='highlight'><pre>		render : <span class="keyword">function</span>(){
+
+			<span class="keyword">this</span>.$el.html( <span class="keyword">this</span>.template( <span class="keyword">this</span>.collection.toJSON() ) );
+			<span class="keyword">return</span> <span class="keyword">this</span>;
+		}
+
+	});</pre></div></div>
             
         </li>
         
@@ -137,11 +150,13 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
-              <p><code>render()</code>에서 현재 view의 마크업을 만듦  </p>
+              <p><code>ListView</code> 인스턴스 생성<br>commnets 컬렉션을 할당, Backbone.View에서 정의</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>		render : <span class="keyword">function</span>(){</pre></div></div>
+            <div class="content"><div class='highlight'><pre>	<span class="keyword">var</span> commentListView = <span class="keyword">new</span> ListView({
+		collection : comments 
+	});</pre></div></div>
             
         </li>
         
@@ -152,11 +167,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
-              <p>현재 view <code>$el</code>  (template string + json data)</p>
+              <p><a href="../2.html">2.html</a> 에 정의된 template 문자열 </p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>			<span class="keyword">this</span>.$el.html( <span class="keyword">this</span>.template( <span class="keyword">this</span>.collection.toJSON() ) );</pre></div></div>
+            <div class="content"><div class='highlight'><pre>	commentListView.template = _.template( $(<span class="string">'#CommentListTemplate'</span>).html() );</pre></div></div>
             
         </li>
         
@@ -167,14 +182,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-8">&#182;</a>
               </div>
-              <p>보통 this를 return 한다 </p>
+              <p><code>collection.fetch()</code> 댓글 데이터 불러오기 </p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>			<span class="keyword">return</span> <span class="keyword">this</span>;
-		}
-
-	});</pre></div></div>
+            <div class="content"><div class='highlight'><pre>	comments.fetch();</pre></div></div>
             
         </li>
         
@@ -185,72 +197,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-9">&#182;</a>
               </div>
-              <p><code>ListView</code> 인스턴스 생성, commnets 컬렉션을 할당 </p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>	<span class="keyword">var</span> commentListView = <span class="keyword">new</span> ListView({</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-10">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-10">&#182;</a>
-              </div>
-              <p>Backbone.View 클래스에서 정의</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>		collection : comments  
-	});</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-11">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-11">&#182;</a>
-              </div>
-              <p><a href="../2.html">2.html</a> 에 정의된 template string</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>	commentListView.template = _.template( $(<span class="string">'#CommentListTemplate'</span>).html() );</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-12">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-12">&#182;</a>
-              </div>
-              <p><code>collection.fetch()</code></p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>	comments.fetch();</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-13">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-13">&#182;</a>
-              </div>
               <p>view 넣어주기 </p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>	$(<span class="string">'#CommentListView'</span>).html( commentListView.$el );
+            <div class="content"><div class='highlight'><pre>	$(<span class="string">'#CommentListView'</span>).append( commentListView.$el );
 
 
 })(jQuery);</pre></div></div>

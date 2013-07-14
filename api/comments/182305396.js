@@ -4,7 +4,6 @@
     "userid": "iQixpHkxbow0",
     "content": "잘해라 민주당...판 다 깔렸다..이완용보다 더러운 새누리 새끼들 다 이민보내야한다.\r\n개들은 대한민국의 국민이 아니다.",
     "time": 1372251404000,
-    "dateStr": "2013-06-26T21:56:44+09:00",
     "recommendCount": 770,
     "disagreeCount": 18,
     "childCount": 17,

@@ -26,6 +26,7 @@
 
 		// 가져온 collection 정보 확인 
 		console.log( comments.toJSON() ); //[Object,Object..]
+		console.log( comments.models ); // 자동으로 개별 모델 등록 
 		console.log( comments.length ); //19
 
 	});
