@@ -1,0 +1,23 @@
+{
+  "name": "backbonejs-abc",
+  "version": "0.0.0",
+  "description": "",
+  "main": "1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/niceaji/backbonejs-abc.git"
+  },
+  "author": "aji",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "keywords": [
+    "backbonejs",
+    "javascript"
+  ],
+  "bugs": {
+    "url": "https://github.com/niceaji/backbonejs-abc/issues"
+  }
+}
